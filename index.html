@@ -23,14 +23,13 @@
             background-color: #2a2a2a;
             z-index: 1000;
             border-bottom: 1px solid #3a8ee6;
+            padding: 8px 0; /* slimmer navbar */
         }
 
         .nav-container {
             display: flex;
             justify-content: center;
-            gap: 50px;
-            padding: 15px 0;
-            flex-wrap: wrap;
+            gap: 25px; /* smaller gap between links */
         }
 
         nav a {
@@ -52,9 +51,9 @@
             align-items: center;
             justify-content: center;
             height: 100vh;
-            padding: 0 50px;
+            padding: 0 50px 80px 50px; /* added bottom padding so Learn More fits */
             text-align: left;
-            margin-top: 60px;
+            margin-top: 60px; /* leaves space for fixed navbar */
             position: relative;
         }
 
@@ -79,7 +78,6 @@
             margin-top: 20px;
             display: flex;
             gap: 20px;
-            flex-wrap: wrap;
         }
 
         .hero-btn.work {
@@ -131,7 +129,7 @@
         /* === LEARN MORE ARROW === */
         .learn-more {
             position: absolute;
-            bottom: 30px;
+            bottom: -20px; /* moved below hero content */
             left: 50%;
             transform: translateX(-50%);
             text-align: center;
@@ -218,60 +216,47 @@
             transform: translateY(-5px);
         }
 
-        /* === MOBILE RESPONSIVE IMPROVEMENTS === */
+        /* === RESPONSIVE ADJUSTMENTS === */
         @media (max-width: 1000px) {
             .hero {
                 flex-direction: column;
                 text-align: center;
                 height: auto;
-                padding: 40px 20px;
+                padding-bottom: 60px;
             }
             .hero .photo {
                 margin-top: 30px;
             }
-            .hero .text h1 {
-                font-size: 3em;
+            nav {
+                padding: 5px 0;
             }
-            .hero .text p {
-                font-size: 1.2em;
-            }
-            .hero-buttons {
-                flex-direction: column;
+            .nav-container {
                 gap: 15px;
             }
-            section {
-                padding: 40px 20px;
-                margin: 10px;
-            }
-            section h2 {
-                font-size: 1.5em;
-            }
-            .experience-box, .volunteer-box, .education-item {
-                padding: 12px;
-            }
-            .contact-buttons {
-                flex-direction: column;
-                gap: 15px;
+            .learn-more {
+                bottom: -10px;
             }
         }
 
         @media (max-width: 600px) {
             .hero .text h1 {
-                font-size: 2.2em;
+                font-size: 2.5em;
             }
             .hero .text p {
-                font-size: 1em;
+                font-size: 1.2em;
             }
             .hero .photo img {
                 width: 200px;
                 height: 200px;
             }
-            .learn-more span {
-                font-size: 1.5em;
+            nav {
+                padding: 4px 0;
             }
-            nav a {
-                font-size: 0.9em;
-                margin: 5px;
+            .nav-container {
+                gap: 10px;
+            }
+            .learn-more {
+                bottom: -5px;
             }
         }
     </style>
@@ -328,21 +313,18 @@
     <!-- WORK EXPERIENCE SECTION -->
     <section id="work">
         <h2>Work Experience</h2>
-
         <div class="experience-box">
             <h3>KPMG – Audit Intern</h3>
             <p><em>January – Present</em></p>
             <p>Will assist in audit testing, walkthroughs, and analytical procedures to evaluate GAAP compliance.</p>
             <p>Support engagement teams with financial reviews, controls testing, and preparation of audit workpapers.</p>
         </div>
-
         <div class="experience-box">
             <h3>Illinois State University Campus Recreation – Customer Service Associate</h3>
             <p><em>April 2024 – Present</em></p>
             <p>Assisted 150+ customers daily while resolving questions and maintaining efficient front-desk operations.</p>
             <p>Managed scheduling and reservations for campus events to ensure smooth facility coordination.</p>
         </div>
-
         <div class="experience-box">
             <h3>Lettuce Entertain You Enterprises – Business Operations Intern</h3>
             <p><em>May 2025 – August 2025</em></p>
@@ -350,7 +332,6 @@
             <p>Analyzed operational trends and KPIs to identify efficiency opportunities for staffing and market research.</p>
             <p>Placed 1st among internship teams in final project presentation judged by 20+ executives, demonstrating strategic analysis.</p>
         </div>
-
         <div class="experience-box">
             <h3>NASCAR Chicago Street Race & Windy City Smokeout – Operations Intern</h3>
             <p><em>August 2023 – August 2025</em></p>
@@ -362,41 +343,35 @@
     <!-- LEADERSHIP EXPERIENCE SECTION -->
     <section id="leadership">
         <h2>Leadership Experience</h2>
-
         <div class="experience-box">
             <h3>Professional Sales Institute – Outreach Coordinator</h3>
             <p><em>August 2025 – Present</em></p>
             <p>Coordinated outreach to 30+ companies and RSOs for ISU’s Golf & Networking Mixer, strengthening corporate sponsorships.</p>
             <p>Supported career fairs by managing communication and partnership-related initiatives.</p>
         </div>
-
         <div class="experience-box">
             <h3>Alpha Kappa Psi Business Fraternity – Treasurer</h3>
             <p><em>May 2025 – January 2026</em></p>
             <p>Oversee budgets, dues collection, and financial reporting for 80+ members while ensuring accuracy.</p>
             <p>Enhanced budgeting transparency and spending oversight across chapter leadership.</p>
         </div>
-
         <div class="experience-box">
             <h3>Alpha Kappa Psi Business Fraternity – Mentor</h3>
             <p><em>May 2025 – January 2026</em></p>
             <p>Mentored pledges through resume refinement, interview preparation, and networking development.</p>
         </div>
-
         <div class="experience-box">
             <h3>Alpha Kappa Psi Business Fraternity – Fundraising Chair</h3>
             <p><em>November 2024 – May 2025</em></p>
             <p>Increased fundraising revenue 47% year-over-year through pricing and targeted outreach.</p>
             <p>Led 14 fundraising events, generating $1,100+ and built an Excel tracking system for monitoring event costs, revenues, profits, and ROI.</p>
         </div>
-
         <div class="experience-box">
             <h3>Discovery Partners Institute – Career Catalyst Program Participant</h3>
             <p><em>May 2025 – June 2025</em></p>
             <p>Participated in selective tech immersion program with company tours, exec panels, and networking to enhance technical literacy.</p>
             <p>Gained hands-on experience in AI and tech through workshops on technical skills, trends, and emerging innovation.</p>
         </div>
-
         <div class="experience-box">
             <h3>Business Week Mentorship Program – Mentor & Mentee</h3>
             <p><em>January 2025 – February 2025</em></p>
@@ -408,14 +383,12 @@
     <!-- VOLUNTEER SECTION -->
     <section id="volunteer">
         <h2>Volunteer Work</h2>
-
         <div class="volunteer-box">
             <h3>Totes4Hope – Co-Founder</h3>
             <p><em>September 2024 – November 2024</em></p>
             <p>Raised $1,400+ in 4 weeks through targeted outreach, pricing strategy, and streamlined operations.</p>
             <p>Maintained financial records and managed inventory for 300+ units, improving budgeting accuracy and operational efficiency.</p>
         </div>
-
         <div class="volunteer-box">
             <h3>Lincoln Park Cultural Center</h3>
             <p><em>June 2017 – August 2020</em></p>
