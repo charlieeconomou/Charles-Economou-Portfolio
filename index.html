@@ -1,277 +1,160 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Charles Economou's Portfolio</title>
-    <style>
-        /* === DARK THEME WITH BLUE ACCENTS === */
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-            line-height: 1.6;
-            background-color: #1c1c1c;
-            color: #e0e0e0;
-        }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Charles Economou's Portfolio</title>
+<style>
+    /* === DARK THEME WITH BLUE ACCENTS === */
+    body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        line-height: 1.6;
+        background-color: #1c1c1c;
+        color: #e0e0e0;
+    }
 
-        /* === NAVIGATION BAR === */
-        nav {
-            position: fixed;
-            top: 0;
-            width: 100%;
-            background-color: #2a2a2a;
-            z-index: 1000;
-            border-bottom: 1px solid #3a8ee6;
-            padding: 8px 0; 
-        }
+    /* === NAVIGATION BAR === */
+    nav {
+        position: fixed;
+        top: 0;
+        width: 100%;
+        background-color: #2a2a2a;
+        z-index: 1000;
+        border-bottom: 1px solid #3a8ee6;
+        padding: 8px 0;
+    }
 
-        .nav-container {
-            display: flex;
-            justify-content: center;
-            flex-wrap: wrap; /* allow wrapping on narrow screens */
-            gap: 10px;
-        }
+    .nav-container {
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
+        gap: 10px;
+    }
 
-        nav a {
-            color: #e0e0e0;
-            text-decoration: none;
-            font-weight: bold;
-            font-size: 1em;
-            transition: color 0.3s;
-            padding: 8px 12px;
-            text-align: center; /* center text in each tab */
-            min-width: 80px;
-        }
+    nav a {
+        color: #e0e0e0;
+        text-decoration: none;
+        font-weight: bold;
+        font-size: 1em;
+        transition: color 0.3s;
+        padding: 8px 12px;
+        text-align: center;
+        min-width: 80px;
+    }
 
-        nav a:hover {
-            color: #3a8ee6;
-        }
+    nav a:hover {
+        color: #3a8ee6;
+    }
 
-        /* === HERO SECTION === */
-        .hero {
-            display: flex;
-            flex-direction: row;
-            align-items: center;
-            justify-content: center;
-            height: 100vh;
-            padding: 0 20px 80px 20px;
-            text-align: left;
-            margin-top: 60px; 
-            position: relative;
-        }
+    /* Hamburger menu for mobile */
+    .hamburger {
+        display: none;
+        flex-direction: column;
+        cursor: pointer;
+        position: absolute;
+        right: 20px;
+        top: 12px;
+    }
+    .hamburger div {
+        width: 25px;
+        height: 3px;
+        background-color: #e0e0e0;
+        margin: 4px 0;
+    }
 
-        .hero .text {
-            flex: 1;
-        }
+    /* Dropdown menu */
+    #dropdownMenu {
+        display: none;
+        flex-direction: column;
+        background-color: #2a2a2a;
+        position: fixed;
+        top: 50px;
+        width: 100%;
+        left: 0;
+        z-index: 999;
+        border-top: 1px solid #3a8ee6;
+    }
+    #dropdownMenu a {
+        padding: 15px;
+        border-bottom: 1px solid #444;
+        text-align: center;
+    }
 
-        .hero .text h1 {
-            margin: 0;
-            font-size: 4em;
-            color: #3a8ee6;
-        }
+    /* === HERO SECTION === */
+    .hero {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: center;
+        height: 100vh;
+        padding: 0 20px 80px 20px;
+        text-align: left;
+        margin-top: 60px;
+        position: relative;
+    }
+    .hero .text { flex: 1; }
+    .hero .text h1 { margin:0; font-size: 4em; color:#3a8ee6; }
+    .hero .text p { margin:15px 0 0 0; font-size:1.6em; color:#e0e0e0; }
+    .hero-buttons { margin-top: 20px; display: flex; gap: 20px; flex-wrap: wrap; }
+    .hero-btn.work { text-decoration:none; color:#fff; background-color:#3a8ee6; padding:12px 25px; border-radius:8px; font-weight:bold; transition:0.3s; }
+    .hero-btn.work:hover { background-color:#6aa9ff; transform:translateY(-3px); }
+    .hero-btn.contact { text-decoration:none; color:#3a8ee6; background-color:transparent; border:2px solid #3a8ee6; padding:12px 25px; border-radius:8px; font-weight:bold; transition:0.3s; }
+    .hero-btn.contact:hover { background-color:#3a8ee6; color:#fff; transform:translateY(-3px); }
+    .hero .photo { flex:1; display:flex; justify-content:center; }
+    .hero .photo img { width:300px; height:300px; border-radius:50%; object-fit:cover; border:3px solid #3a8ee6; }
+    .learn-more { position:absolute; bottom:-20px; left:50%; transform:translateX(-50%); text-align:center; font-size:1em; color:#3a8ee6; cursor:pointer; animation:bounce 2s infinite; }
+    .learn-more span { display:block; font-size:2em; }
+    @keyframes bounce { 0%,20%,50%,80%,100% {transform:translateX(-50%) translateY(0);} 40% {transform:translateX(-50%) translateY(-10px);} 60% {transform:translateX(-50%) translateY(-5px);} }
 
-        .hero .text p {
-            margin: 15px 0 0 0;
-            font-size: 1.6em;
-            color: #e0e0e0;
-        }
+    /* === SECTION STYLING === */
+    section { padding:80px 50px 40px 50px; background-color:#2a2a2a; margin:20px; border-radius:10px; }
+    section h2 { margin-top:0; font-size:2em; color:#3a8ee6; border-bottom:2px solid #3a8ee6; display:inline-block; padding-bottom:5px; }
+    .education-item, .experience-box, .volunteer-box { margin-bottom:20px; }
+    .education-item h3, .experience-box h3, .volunteer-box h3 { margin:0; color:#6aa9ff; }
+    .education-item p, .experience-box p, .volunteer-box p { margin:5px 0; color:#e0e0e0; }
+    .experience-box, .volunteer-box { border:1px solid #444; padding:15px; border-radius:8px; background-color:#333; }
+    .contact-buttons { display:flex; flex-wrap:wrap; gap:20px; margin-top:20px; }
+    .contact-box { flex:1; min-width:150px; text-align:center; padding:20px; background-color:transparent; color:#3a8ee6; font-weight:bold; text-decoration:none; border:2px solid #3a8ee6; border-radius:8px; transition:0.3s; }
+    .contact-box:hover { background-color:#3a8ee6; color:#fff; transform:translateY(-5px); }
 
-        /* === HERO BUTTONS === */
-        .hero-buttons {
-            margin-top: 20px;
-            display: flex;
-            gap: 20px;
-            flex-wrap: wrap;
-        }
-
-        .hero-btn.work {
-            text-decoration: none;
-            color: #fff;
-            background-color: #3a8ee6;
-            padding: 12px 25px;
-            border-radius: 8px;
-            font-weight: bold;
-            transition: background-color 0.3s, transform 0.2s;
-        }
-
-        .hero-btn.work:hover {
-            background-color: #6aa9ff;
-            transform: translateY(-3px);
-        }
-
-        .hero-btn.contact {
-            text-decoration: none;
-            color: #3a8ee6;
-            background-color: transparent;
-            border: 2px solid #3a8ee6;
-            padding: 12px 25px;
-            border-radius: 8px;
-            font-weight: bold;
-            transition: background-color 0.3s, color 0.3s, transform 0.2s;
-        }
-
-        .hero-btn.contact:hover {
-            background-color: #3a8ee6;
-            color: #fff;
-            transform: translateY(-3px);
-        }
-
-        .hero .photo {
-            flex: 1;
-            display: flex;
-            justify-content: center;
-        }
-
-        .hero .photo img {
-            width: 300px;
-            height: 300px;
-            border-radius: 50%;
-            object-fit: cover;
-            border: 3px solid #3a8ee6;
-        }
-
-        /* === LEARN MORE ARROW === */
-        .learn-more {
-            position: absolute;
-            bottom: -20px;
-            left: 50%;
-            transform: translateX(-50%);
-            text-align: center;
-            font-size: 1em;
-            color: #3a8ee6;
-            cursor: pointer;
-            animation: bounce 2s infinite;
-        }
-
-        .learn-more span {
-            display: block;
-            font-size: 2em;
-        }
-
-        @keyframes bounce {
-            0%, 20%, 50%, 80%, 100% { transform: translateX(-50%) translateY(0); }
-            40% { transform: translateX(-50%) translateY(-10px); }
-            60% { transform: translateX(-50%) translateY(-5px); }
-        }
-
-        /* === SECTION STYLING === */
-        section {
-            padding: 80px 50px 40px 50px;
-            background-color: #2a2a2a;
-            margin: 20px;
-            border-radius: 10px;
-        }
-
-        section h2 {
-            margin-top: 0;
-            font-size: 2em;
-            color: #3a8ee6;
-            border-bottom: 2px solid #3a8ee6;
-            display: inline-block;
-            padding-bottom: 5px;
-        }
-
-        .education-item, .experience-box, .volunteer-box {
-            margin-bottom: 20px;
-        }
-
-        .education-item h3, .experience-box h3, .volunteer-box h3 {
-            margin: 0;
-            color: #6aa9ff;
-        }
-
-        .education-item p, .experience-box p, .volunteer-box p {
-            margin: 5px 0;
-            color: #e0e0e0;
-        }
-
-        .experience-box, .volunteer-box {
-            border: 1px solid #444;
-            padding: 15px;
-            border-radius: 8px;
-            background-color: #333;
-        }
-
-        /* === CONTACT SECTION === */
-        .contact-buttons {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 20px;
-            margin-top: 20px;
-        }
-
-        .contact-box {
-            flex: 1;
-            min-width: 150px;
-            text-align: center;
-            padding: 20px;
-            background-color: transparent;
-            color: #3a8ee6;
-            font-weight: bold;
-            text-decoration: none;
-            border: 2px solid #3a8ee6;
-            border-radius: 8px;
-            transition: background-color 0.3s, color 0.3s, transform 0.2s;
-        }
-
-        .contact-box:hover {
-            background-color: #3a8ee6;
-            color: #fff;
-            transform: translateY(-5px);
-        }
-
-        /* === RESPONSIVE ADJUSTMENTS === */
-        @media (max-width: 1000px) {
-            .hero {
-                flex-direction: column;
-                text-align: center;
-                height: auto;
-                padding-bottom: 60px;
-            }
-            .hero .photo {
-                margin-top: 30px;
-            }
-            nav {
-                padding: 5px 0;
-            }
-            .nav-container {
-                flex-direction: column; /* stack links vertically */
-                align-items: center;
-            }
-            .hero-buttons {
-                justify-content: center;
-            }
-            .learn-more {
-                bottom: -10px;
-            }
-        }
-
-        @media (max-width: 600px) {
-            .hero .text h1 {
-                font-size: 2.5em;
-            }
-            .hero .text p {
-                font-size: 1.2em;
-            }
-            .hero .photo img {
-                width: 200px;
-                height: 200px;
-            }
-            nav a {
-                min-width: 70px;
-            }
-            .learn-more {
-                bottom: -5px;
-            }
-        }
-    </style>
+    /* === RESPONSIVE ADJUSTMENTS === */
+    @media (max-width: 1000px) {
+        .hero { flex-direction:column; text-align:center; height:auto; padding-bottom:60px; }
+        .hero .photo { margin-top:30px; }
+        .hero-buttons { justify-content:center; }
+        .learn-more { bottom:-10px; }
+    }
+    @media (max-width: 600px) {
+        .nav-container { display:none; }
+        .hamburger { display:flex; }
+        .hero .text h1 { font-size:2.5em; }
+        .hero .text p { font-size:1.2em; }
+        .hero .photo img { width:200px; height:200px; }
+        .learn-more { bottom:-5px; }
+    }
+</style>
 </head>
 <body>
 
     <!-- NAVIGATION -->
     <nav>
         <div class="nav-container">
+            <a href="#home">Home</a>
+            <a href="#education">Education</a>
+            <a href="#work">Work Experience</a>
+            <a href="#leadership">Leadership Experience</a>
+            <a href="#volunteer">Volunteer Work</a>
+            <a href="#contact">Contact Me</a>
+        </div>
+        <!-- Hamburger -->
+        <div class="hamburger" onclick="toggleMenu()">
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
+        <div id="dropdownMenu">
             <a href="#home">Home</a>
             <a href="#education">Education</a>
             <a href="#work">Work Experience</a>
@@ -295,8 +178,7 @@
             <img src="charlie.jpg" alt="Charles Economou">
         </div>
         <div class="learn-more">
-            <span>↓</span>
-            Learn More
+            <span>↓</span> Learn More
         </div>
     </div>
 
@@ -414,5 +296,15 @@
         </div>
     </section>
 
+<script>
+function toggleMenu() {
+    const menu = document.getElementById("dropdownMenu");
+    if (menu.style.display === "flex") {
+        menu.style.display = "none";
+    } else {
+        menu.style.display = "flex";
+    }
+}
+</script>
 </body>
 </html>
