@@ -23,13 +23,14 @@
             background-color: #2a2a2a;
             z-index: 1000;
             border-bottom: 1px solid #3a8ee6;
-            padding: 8px 0; /* slimmer navbar */
+            padding: 8px 0; 
         }
 
         .nav-container {
             display: flex;
             justify-content: center;
-            gap: 25px; /* smaller gap between links */
+            flex-wrap: wrap; /* allow wrapping on narrow screens */
+            gap: 10px;
         }
 
         nav a {
@@ -38,6 +39,9 @@
             font-weight: bold;
             font-size: 1em;
             transition: color 0.3s;
+            padding: 8px 12px;
+            text-align: center; /* center text in each tab */
+            min-width: 80px;
         }
 
         nav a:hover {
@@ -51,9 +55,9 @@
             align-items: center;
             justify-content: center;
             height: 100vh;
-            padding: 0 50px 80px 50px; /* added bottom padding so Learn More fits */
+            padding: 0 20px 80px 20px;
             text-align: left;
-            margin-top: 60px; /* leaves space for fixed navbar */
+            margin-top: 60px; 
             position: relative;
         }
 
@@ -78,6 +82,7 @@
             margin-top: 20px;
             display: flex;
             gap: 20px;
+            flex-wrap: wrap;
         }
 
         .hero-btn.work {
@@ -129,7 +134,7 @@
         /* === LEARN MORE ARROW === */
         .learn-more {
             position: absolute;
-            bottom: -20px; /* moved below hero content */
+            bottom: -20px;
             left: 50%;
             transform: translateX(-50%);
             text-align: center;
@@ -231,7 +236,11 @@
                 padding: 5px 0;
             }
             .nav-container {
-                gap: 15px;
+                flex-direction: column; /* stack links vertically */
+                align-items: center;
+            }
+            .hero-buttons {
+                justify-content: center;
             }
             .learn-more {
                 bottom: -10px;
@@ -249,11 +258,8 @@
                 width: 200px;
                 height: 200px;
             }
-            nav {
-                padding: 4px 0;
-            }
-            .nav-container {
-                gap: 10px;
+            nav a {
+                min-width: 70px;
             }
             .learn-more {
                 bottom: -5px;
