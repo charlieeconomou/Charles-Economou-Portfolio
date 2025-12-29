@@ -238,15 +238,19 @@
         }
 
         .dropdown-content {
-            display: none; /* hidden by default */
+            display: none;
             flex-direction: column;
+            width: 100%;
             background-color: #2a2a2a;
             border-top: 1px solid #3a8ee6;
+            position: relative;
+            z-index: 999;
         }
 
         .dropdown-content a {
             padding: 12px 20px;
             border-bottom: 1px solid #444;
+            text-align: left;
         }
 
         .dropdown-content a:hover {
@@ -254,29 +258,20 @@
             color: #fff;
         }
 
-        /* Show dropdown on vertical phone screens when toggled */
-        @media (max-width: 1000px) and (orientation: portrait) {
-            nav a {
-                display: none; /* hide normal nav links */
-            }
-            .dropbtn {
-                display: block; /* show menu button */
-            }
-            .dropdown-content.show {
-                display: flex;
-            }
+        .dropdown-content.show {
+            display: flex;
         }
 
-        @media (max-width: 1000px) and (orientation: landscape) {
-            nav a {
-                display: flex; /* show nav links on horizontal phones */
-            }
-            .dropbtn {
-                display: none; /* hide menu button on horizontal */
-            }
-        }
-
+        /* === RESPONSIVE HERO AND NAV === */
         @media (max-width: 1000px) {
+            .nav-container {
+                display: none; /* hide normal nav links on phones */
+                flex-direction: column;
+                width: 100%;
+            }
+            .dropbtn {
+                display: block;
+            }
             .hero {
                 flex-direction: column;
                 text-align: center;
@@ -475,7 +470,7 @@
 
         window.addEventListener('resize', function() {
             var dropdown = document.getElementById("dropdown");
-            if (window.innerWidth > 1000 || window.matchMedia("(orientation: landscape)").matches) {
+            if (window.innerWidth > 1000) {
                 dropdown.classList.remove("show");
             }
         });
