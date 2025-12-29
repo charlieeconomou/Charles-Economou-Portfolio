@@ -467,7 +467,7 @@
     <script>
         function toggleDropdown() {
             var dropdown = document.getElementById("dropdown");
-            if (dropdown.style.display === "flex") {
+            if (dropdown.style.display === "flex" || dropdown.style.display === "block") {
                 dropdown.style.display = "none";
             } else {
                 dropdown.style.display = "flex";
@@ -475,7 +475,6 @@
             }
         }
 
-        // Hide dropdown automatically if screen rotates or resized to landscape
         window.addEventListener('resize', function() {
             var dropdown = document.getElementById("dropdown");
             if (window.innerWidth > 1000 || window.matchMedia("(orientation: landscape)").matches) {
