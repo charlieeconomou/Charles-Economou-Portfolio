@@ -238,7 +238,7 @@
         }
 
         .dropdown-content {
-            display: none;
+            display: none; /* hidden by default */
             flex-direction: column;
             background-color: #2a2a2a;
             border-top: 1px solid #3a8ee6;
@@ -254,13 +254,16 @@
             color: #fff;
         }
 
-        /* === RESPONSIVE ADJUSTMENTS === */
+        /* Show dropdown on vertical phone screens when toggled */
         @media (max-width: 1000px) and (orientation: portrait) {
             nav a {
-                display: none; /* hide nav links on narrow vertical screens */
+                display: none; /* hide normal nav links */
             }
             .dropbtn {
-                display: block; /* show menu button only on vertical */
+                display: block; /* show menu button */
+            }
+            .dropdown-content.show {
+                display: flex;
             }
         }
 
@@ -467,18 +470,13 @@
     <script>
         function toggleDropdown() {
             var dropdown = document.getElementById("dropdown");
-            if (dropdown.style.display === "flex" || dropdown.style.display === "block") {
-                dropdown.style.display = "none";
-            } else {
-                dropdown.style.display = "flex";
-                dropdown.style.flexDirection = "column";
-            }
+            dropdown.classList.toggle("show");
         }
 
         window.addEventListener('resize', function() {
             var dropdown = document.getElementById("dropdown");
             if (window.innerWidth > 1000 || window.matchMedia("(orientation: landscape)").matches) {
-                dropdown.style.display = "none";
+                dropdown.classList.remove("show");
             }
         });
     </script>
