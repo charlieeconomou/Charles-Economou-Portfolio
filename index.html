@@ -221,10 +221,6 @@
         }
 
         /* === MOBILE DROPDOWN BUTTON === */
-        .dropdown {
-            display: none;
-        }
-
         .dropbtn {
             display: none;
             background-color: #2a2a2a;
@@ -259,6 +255,24 @@
         }
 
         /* === RESPONSIVE ADJUSTMENTS === */
+        @media (max-width: 1000px) and (orientation: portrait) {
+            nav a {
+                display: none; /* hide nav links on narrow vertical screens */
+            }
+            .dropbtn {
+                display: block; /* show menu button only on vertical */
+            }
+        }
+
+        @media (max-width: 1000px) and (orientation: landscape) {
+            nav a {
+                display: flex; /* show nav links on horizontal phones */
+            }
+            .dropbtn {
+                display: none; /* hide menu button on horizontal */
+            }
+        }
+
         @media (max-width: 1000px) {
             .hero {
                 flex-direction: column;
@@ -268,12 +282,6 @@
             }
             .hero .photo {
                 margin-top: 30px;
-            }
-            nav a {
-                display: none; /* hide nav links on narrow screens */
-            }
-            .dropbtn {
-                display: block;
             }
             .hero-buttons {
                 justify-content: center;
@@ -463,8 +471,18 @@
                 dropdown.style.display = "none";
             } else {
                 dropdown.style.display = "flex";
+                dropdown.style.flexDirection = "column";
             }
         }
+
+        // Hide dropdown automatically if screen rotates or resized to landscape
+        window.addEventListener('resize', function() {
+            var dropdown = document.getElementById("dropdown");
+            if (window.innerWidth > 1000 || window.matchMedia("(orientation: landscape)").matches) {
+                dropdown.style.display = "none";
+            }
+        });
     </script>
+
 </body>
 </html>
