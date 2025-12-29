@@ -30,6 +30,7 @@
             justify-content: center;
             gap: 50px;
             padding: 15px 0;
+            flex-wrap: wrap;
         }
 
         nav a {
@@ -78,9 +79,9 @@
             margin-top: 20px;
             display: flex;
             gap: 20px;
+            flex-wrap: wrap;
         }
 
-        /* View My Work filled blue */
         .hero-btn.work {
             text-decoration: none;
             color: #fff;
@@ -96,7 +97,6 @@
             transform: translateY(-3px);
         }
 
-        /* Get in Touch outlined blue style */
         .hero-btn.contact {
             text-decoration: none;
             color: #3a8ee6;
@@ -218,15 +218,60 @@
             transform: translateY(-5px);
         }
 
-        /* Responsive adjustments */
+        /* === MOBILE RESPONSIVE IMPROVEMENTS === */
         @media (max-width: 1000px) {
             .hero {
                 flex-direction: column;
                 text-align: center;
                 height: auto;
+                padding: 40px 20px;
             }
             .hero .photo {
                 margin-top: 30px;
+            }
+            .hero .text h1 {
+                font-size: 3em;
+            }
+            .hero .text p {
+                font-size: 1.2em;
+            }
+            .hero-buttons {
+                flex-direction: column;
+                gap: 15px;
+            }
+            section {
+                padding: 40px 20px;
+                margin: 10px;
+            }
+            section h2 {
+                font-size: 1.5em;
+            }
+            .experience-box, .volunteer-box, .education-item {
+                padding: 12px;
+            }
+            .contact-buttons {
+                flex-direction: column;
+                gap: 15px;
+            }
+        }
+
+        @media (max-width: 600px) {
+            .hero .text h1 {
+                font-size: 2.2em;
+            }
+            .hero .text p {
+                font-size: 1em;
+            }
+            .hero .photo img {
+                width: 200px;
+                height: 200px;
+            }
+            .learn-more span {
+                font-size: 1.5em;
+            }
+            nav a {
+                font-size: 0.9em;
+                margin: 5px;
             }
         }
     </style>
